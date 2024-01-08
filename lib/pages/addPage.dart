@@ -23,13 +23,16 @@ class _AddPageState extends State<AddPage> {
     init();
   }
 
+
+
   Future<void> init() async {
     // 로컬에서 리스트 값을 획득
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     String backup = prefs.getString("list") ?? "";
 
-    // [{}] 형태의 값을 획득
+    // [{"양치", "20231228"},{"조깅","20231211"}] 형태의 값을 획득
     List<dynamic> listBackup = jsonDecode(backup);
+
     for(dynamic row in listBackup){
       _list.add(Todo.fromJson(row));
     }
